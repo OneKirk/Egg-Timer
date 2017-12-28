@@ -11,7 +11,7 @@ import UserNotifications
 
 class TimerViewController: UIViewController {
     
-    //Variable declaration
+    // Variable declaration
     var timer = Timer()
     var userSelectedTime = 0
     var time = Int()
@@ -19,10 +19,10 @@ class TimerViewController: UIViewController {
     var content = UNMutableNotificationContent()
     let center = UNUserNotificationCenter.current()
 
-    //Outlets
+    // Outlets
     @IBOutlet weak var resultLabel: UILabel!
     
-    //IBActions
+    // IBActions
     @IBAction func pauseButton(_ sender: Any) {
         timer.invalidate()
         center.removeAllPendingNotificationRequests()
@@ -43,7 +43,7 @@ class TimerViewController: UIViewController {
         resultLabel.text = timeString
     }
     
-    //Functions
+    // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         time = userSelectedTime

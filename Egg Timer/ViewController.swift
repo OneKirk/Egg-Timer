@@ -10,18 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //Variable declaration
+    // Variable declaration
     var userSelectedTime = 0
     var userEggSizeSelected = 0
     var userEggCookingSelected = 0
-    //var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
+    // var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
     var cookingTimes = [[5, 10, 15], [5, 10, 15], [5, 10, 15], [5, 10, 15]] // Delete before deployment
 
     // Outlets
     @IBOutlet weak var eggSizeSelector: UISegmentedControl!
     @IBOutlet weak var eggCookingSelector: UISegmentedControl!
     
-    //IBActions
+    // IBActions
     @IBAction func eggSizeSelected(_ sender: Any) {
         userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
     }
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(myVC, animated: true)
     }
     
-    //Functions
+    // Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
