@@ -12,12 +12,15 @@ import UserNotifications
 class TimerViewController: UIViewController {
     
     // Variable declaration
-    var timer = Timer()
-    var userSelectedTime = 0
-    var time = Int()
-    var timeString = String()
-    var content = UNMutableNotificationContent()
-    let center = UNUserNotificationCenter.current()
+    var timer: Timer = Timer()
+    var userSelectedTime: Int = 0
+    var time: Int = Int()
+    var startTime: NSDate = NSDate()
+    var endTime: NSDate = NSDate()
+    var timeString: String = String()
+    var content: UNMutableNotificationContent = UNMutableNotificationContent()
+    let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
+    var wasSendToBackground: Bool = false
 
     // Outlets
     @IBOutlet weak var resultLabel: UILabel!
@@ -32,6 +35,7 @@ class TimerViewController: UIViewController {
         // Creating the timer
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(processTimer), userInfo: nil, repeats: true)
         setupNotifications()
+        endTime = startTime.addingTimeInterval(TimeInterval(time))
     }
     
     @IBAction func resetButton(_ sender: Any) {
@@ -46,14 +50,44 @@ class TimerViewController: UIViewController {
     // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         time = userSelectedTime
         convertToMinuttesAndSeconds(userSeconds: time)
         resultLabel.text = timeString
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         // Requesting access to local notifications
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             print(granted)
             print(error ?? "No Error")
+        }
+    }
+    
+    @objc func applicationDidEnterBackground() {
+
+        UserDefaults.standard.set(endTime, forKey: "endTime")
+        wasSendToBackground = true
+    }
+    
+    @objc func applicationDidBecomeActive() {
+        if wasSendToBackground {
+            
+            wasSendToBackground = false
+            
+            if let remainingTime = UserDefaults.standard.object(forKey: "endTime") as? NSDate {
+                
+                time = Int(remainingTime.timeIntervalSinceNow)
+                
+                if time > 0 {
+                    convertToMinuttesAndSeconds(userSeconds: time)
+                    resultLabel.text = timeString
+                } else {
+                    resultLabel.text = "00:00"
+                }
+            }
         }
     }
     
@@ -69,7 +103,6 @@ class TimerViewController: UIViewController {
             resultLabel.text = timeString
         } else {
             timer.invalidate()
-            
         }
     }
     
@@ -99,6 +132,7 @@ class TimerViewController: UIViewController {
         content.body = "Enjoy the perfect eggs"
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "TIMER_EXPIRED"
+        content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
         
         // Defining trigger,request and requesting authorization.
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(time), repeats: false)
@@ -109,5 +143,9 @@ class TimerViewController: UIViewController {
                 print(theError.localizedDescription)
                 }
             }
+        }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
         }
     }

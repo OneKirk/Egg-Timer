@@ -110,7 +110,7 @@
         <scene sceneID="Npd-pG-Hfm">
             <objects>
                 <viewController storyboardIdentifier="TimerViewController" id="Xob-MO-Muf" customClass="TimerViewController" customModule="Egg_Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rg3-3Z-5HD">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="storyboard" id="rg3-3Z-5HD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
