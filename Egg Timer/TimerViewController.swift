@@ -36,6 +36,11 @@ class TimerViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(processTimer), userInfo: nil, repeats: true)
         setupNotifications()
         endTime = startTime.addingTimeInterval(TimeInterval(time))
+        
+        // Requesting access to local notifications
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            print(granted)
+            print(error ?? "No Error")}
     }
     
     @IBAction func resetButton(_ sender: Any) {
@@ -55,15 +60,9 @@ class TimerViewController: UIViewController {
         convertToMinuttesAndSeconds(userSeconds: time)
         resultLabel.text = timeString
         
+        // Adding observers to detect transition to/from background state
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        
-        // Requesting access to local notifications
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            print(granted)
-            print(error ?? "No Error")
-        }
     }
     
     @objc func applicationDidEnterBackground() {
@@ -138,6 +137,7 @@ class TimerViewController: UIViewController {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(time), repeats: false)
         let request = UNNotificationRequest(identifier: "Timer expired", content: content, trigger: trigger)
         
+        // Sending the request to Notification Center
         center.add(request) { (error : Error?) in
             if let theError = error {
                 print(theError.localizedDescription)

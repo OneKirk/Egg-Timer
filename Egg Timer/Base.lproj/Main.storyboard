@@ -71,6 +71,7 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="svq-XS-Sck"/>
+                                    <segue destination="Xob-MO-Muf" kind="show" identifier="toTimer" id="etF-fN-Bvy"/>
                                 </connections>
                             </button>
                         </subviews>

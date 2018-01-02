@@ -24,19 +24,23 @@ class ViewController: UIViewController {
     // IBActions
     @IBAction func eggSizeSelected(_ sender: Any) {
         userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
+        userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
     }
     
     @IBAction func eggCookingSelected(_ sender: Any) {
         userEggCookingSelected = eggCookingSelector.selectedSegmentIndex
+        userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        
-        userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
-        
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        myVC.userSelectedTime = userSelectedTime
-        navigationController?.pushViewController(myVC, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTimer" {
+            let timerViewController = segue.destination as! TimerViewController
+            
+            timerViewController.userSelectedTime = userSelectedTime
+        }
     }
     
     // Functions
