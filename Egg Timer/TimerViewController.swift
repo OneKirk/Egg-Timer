@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 class TimerViewController: UIViewController {
-    
+
     // Variable declaration
     var timer: Timer = Timer()
     var userSelectedTime: Int = 0
@@ -184,7 +184,8 @@ class TimerViewController: UIViewController {
                             self.dismiss(animated: true, completion: nil)
                         }))
                         
-                        self.present(alertController, animated: true, completion: nil)}
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }
             }))
             

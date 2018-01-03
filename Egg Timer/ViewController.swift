@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     // Variable declaration
     var userSelectedTime: Int = 0
     var userEggSizeSelected: Int = 0
@@ -49,13 +49,16 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTimer" {
-            let timerViewController = segue.destination as! TimerViewController
             
-            timerViewController.userSelectedTime = userSelectedTime
+            if let timerViewController = segue.destination as? TimerViewController {
+                
+                timerViewController.userSelectedTime = userSelectedTime
+            }
         }
     }
     
     func setUserSelectedTime() {
         userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
     }
+    
 }
