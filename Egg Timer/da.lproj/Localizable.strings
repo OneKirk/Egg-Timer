@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Egg Timer
+
+  Created by Thomas Kirk on 03/01/2018.
+  Copyright © 2018 OneKirk. All rights reserved.
+*/
+
+"Eggs are done" = "Dine æg er færdige!";
+"Perfect eggs" = "Nyd det perfekte æg";
+"Soft push titel" = "Lad os sende dig notifikationer?";
+"Soft push message" = "Vi sender kun notifikationer når dine æg er kogt!";
+"Soft push action NO" = "Nej, Tak";
+"Soft push action YES" = "Ja, Tak";
+"Soft push decline titel" = "Du har afvist adgang til notifikationer!";
+"Soft push decline message" = "Venligst hold øje med timeren, da vi ikke kan sende dig besked når dine æg er kogt!";
+"Soft push decline action OK" = "OK";
+"Hard push decline titel" = "Du har afvist adgang til notifikationer!";
+"Hard push decline message" = "Venligst hold øje med timeren, da vi ikke kan sende dig besked når dine æg er kogt! Hvis du ønsker at ændre dette, kan dette gøres i indstillinger på din telefon!";
+"Hard push decline action OK" = "OK";

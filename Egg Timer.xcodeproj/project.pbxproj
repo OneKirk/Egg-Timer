@@ -14,6 +14,7 @@
 		E94232031FE65AA8000E9D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94232011FE65AA8000E9D41 /* LaunchScreen.storyboard */; };
 		E98682A81FE69C9400D44866 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98682A71FE69C9400D44866 /* TimerViewController.swift */; };
 		E9899F591FFCF95C00C7E69F /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9899F581FFCF95C00C7E69F /* bell.mp3 */; };
+		E9899F6E1FFD530900C7E69F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9899F701FFD530900C7E69F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,10 @@
 		E94232041FE65AA8000E9D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E98682A71FE69C9400D44866 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		E9899F581FFCF95C00C7E69F /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
+		E9899F6A1FFD528500C7E69F /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
+		E9899F6B1FFD528500C7E69F /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E9899F711FFD531100C7E69F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9899F731FFD533900C7E69F /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +71,7 @@
 				E94232011FE65AA8000E9D41 /* LaunchScreen.storyboard */,
 				E94232041FE65AA8000E9D41 /* Info.plist */,
 				E9899F581FFCF95C00C7E69F /* bell.mp3 */,
+				E9899F701FFD530900C7E69F /* Localizable.strings */,
 			);
 			path = "Egg Timer";
 			sourceTree = "<group>";
@@ -113,6 +119,7 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
 			);
 			mainGroup = E94231EC1FE65AA7000E9D41;
 			productRefGroup = E94231F61FE65AA8000E9D41 /* Products */;
@@ -129,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9899F6E1FFD530900C7E69F /* Localizable.strings in Resources */,
 				E94232031FE65AA8000E9D41 /* LaunchScreen.storyboard in Resources */,
 				E9899F591FFCF95C00C7E69F /* bell.mp3 in Resources */,
 				E94232001FE65AA8000E9D41 /* Assets.xcassets in Resources */,
@@ -156,6 +164,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E94231FD1FE65AA8000E9D41 /* Base */,
+				E9899F6A1FFD528500C7E69F /* da */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -164,9 +173,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				E94232021FE65AA8000E9D41 /* Base */,
+				E9899F6B1FFD528500C7E69F /* da */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
+		};
+		E9899F701FFD530900C7E69F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9899F711FFD531100C7E69F /* Base */,
+				E9899F731FFD533900C7E69F /* da */,
+			);
+			name = Localizable.strings;
+			path = "Egg Timer";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
@@ -175,6 +195,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -232,6 +253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

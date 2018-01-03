@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Egg Timer
+
+  Created by Thomas Kirk on 03/01/2018.
+  Copyright © 2018 OneKirk. All rights reserved.
+*/
+
+"Eggs are done" = "Your eggs are done!";
+"Perfect eggs" = "Enjoy the perfect eggs";
+"Soft push titel" = "Let us send you push notifications?";
+"Soft push message" = "We'll only notify you when your eggs are cooked!";
+"Soft push action NO" = "No, Thanks";
+"Soft push action YES" = "Yes, Please";
+"Soft push decline titel" = "You have declined access to send you notifications!";
+"Soft push decline message" = "Please keep an eye on the timer, as we are not allowed to send you a notifications when your eggs are cooked!";
+"Soft push decline action OK" = "OK";
+"Hard push decline titel" = "You have declined access to send you notifications!";
+"Hard push decline message" = "Please keep an eye on the timer, as we are not allowed to send you a notifications when your eggs are cooked! Please change this in settings on you phone if you wish to recieve notifications!";
+"Hard push decline action OK" = "OK";

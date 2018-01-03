@@ -31,7 +31,7 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         center.removeAllPendingNotificationRequests()
     }
-  
+
     @IBAction func playButton(_ sender: Any) {
         // Creating the timer
         if time > 0 {
@@ -42,7 +42,7 @@ class TimerViewController: UIViewController {
             requestingAccessToSendNotifications()
         }
     }
-    
+
     @IBAction func resetButton(_ sender: Any) {
         timer.invalidate()
         center.removeAllPendingNotificationRequests()
@@ -51,7 +51,7 @@ class TimerViewController: UIViewController {
         convertToMinuttesAndSeconds(userSeconds: userSelectedTime)
         resultLabel.text = timeString
     }
-    
+
     // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,13 +66,13 @@ class TimerViewController: UIViewController {
         
         accessToNotifications = UserDefaults.standard.bool(forKey: "accessToNotifications")
     }
-    
+
     @objc func applicationDidEnterBackground() {
 
         UserDefaults.standard.set(endTime, forKey: "endTime")
         wasSendToBackground = true
     }
-    
+
     @objc func applicationDidBecomeActive() {
         if wasSendToBackground {
             
@@ -91,11 +91,11 @@ class TimerViewController: UIViewController {
             }
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     @objc func processTimer() {
         
         if time > 0 {
@@ -106,7 +106,7 @@ class TimerViewController: UIViewController {
             timer.invalidate()
         }
     }
-    
+
     func convertToMinuttesAndSeconds(userSeconds: Int) {
         
         var minutesToString = String()
@@ -126,11 +126,11 @@ class TimerViewController: UIViewController {
         
         timeString = minutesToString + ":" + secondsToString
     }
-    
+
     func setupNotifications() {
         // Defining the content of the local notification
-        content.title = "Your eggs are done!"
-        content.body = "Enjoy the perfect eggs"
+        content.title = NSLocalizedString("Eggs are done", comment: "message")
+        content.body = NSLocalizedString("Perfect eggs", comment: "message")
         content.sound = UNNotificationSound.init(named: "bell.mp3")
         content.categoryIdentifier = "TIMER_EXPIRED"
         content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
@@ -146,27 +146,27 @@ class TimerViewController: UIViewController {
                 }
             }
         }
-    
+
     func requestingAccessToSendNotifications() {
         
         if accessToNotifications == false {
          
             // Setting up the alert controller
-            let alertController = UIAlertController(title: "Let us send you push notifications?", message: "We'll only notify you when your eggs are cooked!", preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Soft push titel", comment: "message"), message: NSLocalizedString("Soft push message", comment: "message"), preferredStyle: UIAlertControllerStyle.alert)
             
             // Adding actions to alert controller
-            alertController.addAction(UIAlertAction(title: "No, Thanks", style: .default, handler: { (action) in
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Soft push action NO", comment: "message"), style: .default, handler: { (action) in
                 
-                let alertController = UIAlertController(title: "You have declined access to send you notifications!", message: "Please keep an eye on the timer, as we are not allowed to send you a notifications when your eggs are cooked!", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: NSLocalizedString("Soft push decline titel", comment: "message"), message: NSLocalizedString("Soft push decline message", comment: "message"), preferredStyle: UIAlertControllerStyle.alert)
                 
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("Soft push decline action OK", comment: "message"), style: .default, handler: { (action) in
                     self.dismiss(animated: true, completion: nil)
                 }))
-                
+
                 self.present(alertController, animated: true, completion: nil)
             }))
-            
-            alertController.addAction(UIAlertAction(title: "Yes, Please", style: .default, handler: { (action) in
+
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Soft push action YES", comment: "message"), style: .default, handler: { (action) in
                 
                 self.dismiss(animated: true, completion: nil)
                 
@@ -174,25 +174,24 @@ class TimerViewController: UIViewController {
                     
                 UserDefaults.standard.set(self.accessToNotifications, forKey: "accessToNotifications")
                 
-                
                 // Requesting access to local notifications
                 self.center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
                     if granted == false {
-                        let alertController = UIAlertController(title: "You have declined access to send you notifications!", message: "Please keep an eye on the timer, as we are not allowed to send you a notifications when your eggs are cooked! Please change this in settings on you phone if you wish to recieve notifications!", preferredStyle: UIAlertControllerStyle.alert)
+                        let alertController = UIAlertController(title: NSLocalizedString("Hard push decline titel", comment: "message"), message: NSLocalizedString("Hard push decline message", comment: "message"), preferredStyle: UIAlertControllerStyle.alert)
                         
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        alertController.addAction(UIAlertAction(title: NSLocalizedString("Hard push decline action OK", comment: "message"), style: .default, handler: { (action) in
                             self.dismiss(animated: true, completion: nil)
                         }))
-                        
+
                         self.present(alertController, animated: true, completion: nil)
                     }
                 }
             }))
-            
+
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     // Removing observers for notification center
     deinit {
         NotificationCenter.default.removeObserver(self)

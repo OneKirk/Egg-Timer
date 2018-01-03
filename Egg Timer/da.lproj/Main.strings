@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "How do you like your eggs?"; ObjectID = "9DT-ir-vtw"; */
+"9DT-ir-vtw.text" = "Hvordan ønsker du dine æg?";
+
+/* Class = "UILabel"; text = "The perfect egg"; ObjectID = "CnA-YN-Cnq"; */
+"CnA-YN-Cnq.text" = "Det perfekte æg";
+
+/* Class = "UISegmentedControl"; LEl-NC-8k1.segmentTitles[0] = "S"; ObjectID = "LEl-NC-8k1"; */
+"LEl-NC-8k1.segmentTitles[0]" = "S";
+
+/* Class = "UISegmentedControl"; LEl-NC-8k1.segmentTitles[1] = "M"; ObjectID = "LEl-NC-8k1"; */
+"LEl-NC-8k1.segmentTitles[1]" = "M";
+
+/* Class = "UISegmentedControl"; LEl-NC-8k1.segmentTitles[2] = "L"; ObjectID = "LEl-NC-8k1"; */
+"LEl-NC-8k1.segmentTitles[2]" = "L";
+
+/* Class = "UISegmentedControl"; LEl-NC-8k1.segmentTitles[3] = "XL"; ObjectID = "LEl-NC-8k1"; */
+"LEl-NC-8k1.segmentTitles[3]" = "XL";
+
+/* Class = "UISegmentedControl"; MHZ-af-5Q5.segmentTitles[0] = "Soft"; ObjectID = "MHZ-af-5Q5"; */
+"MHZ-af-5Q5.segmentTitles[0]" = "Blødkogt";
+
+/* Class = "UISegmentedControl"; MHZ-af-5Q5.segmentTitles[1] = "Medium"; ObjectID = "MHZ-af-5Q5"; */
+"MHZ-af-5Q5.segmentTitles[1]" = "Smilende";
+
+/* Class = "UISegmentedControl"; MHZ-af-5Q5.segmentTitles[2] = "Hard"; ObjectID = "MHZ-af-5Q5"; */
+"MHZ-af-5Q5.segmentTitles[2]" = "Hårdkogt";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "N7N-IN-Khk"; */
+"N7N-IN-Khk.normalTitle" = "Næste";
+
+/* Class = "UINavigationItem"; title = "Welcome"; ObjectID = "evl-GP-RCl"; */
+"evl-GP-RCl.title" = "Velkommen";
+
+/* Class = "UILabel"; text = "6:20"; ObjectID = "gD7-ew-1kj"; */
+"gD7-ew-1kj.text" = "6:20";
+
+/* Class = "UILabel"; text = "Egg Timer"; ObjectID = "qtb-pG-0b6"; */
+"qtb-pG-0b6.text" = "Æggeur";
+
+/* Class = "UILabel"; text = "Select the size off the eggs?"; ObjectID = "xGV-ce-cLF"; */
+"xGV-ce-cLF.text" = "Vælg størrelsen på dine æg";
+
+/* Class = "UIBarButtonItem"; title = "Reset"; ObjectID = "zeK-ro-muQ"; */
+"zeK-ro-muQ.title" = "Nulstil";

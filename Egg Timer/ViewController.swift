@@ -14,29 +14,28 @@ class ViewController: UIViewController {
     var userSelectedTime: Int = 0
     var userEggSizeSelected: Int = 0
     var userEggCookingSelected: Int = 0
-    var cookingTimes = [[5, 10, 15], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
-    // var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
+    var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
 
     // Outlets
     @IBOutlet weak var eggSizeSelector: UISegmentedControl!
     @IBOutlet weak var eggCookingSelector: UISegmentedControl!
-    
+
     // IBActions
     @IBAction func eggSizeSelected(_ sender: Any) {
         userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
         setUserSelectedTime()
     }
-    
+
     @IBAction func eggCookingSelected(_ sender: Any) {
         userEggCookingSelected = eggCookingSelector.selectedSegmentIndex
         setUserSelectedTime()
     }
-    
+
     @IBAction func nextButton(_ sender: Any) {
     }
-    
+
     // Functions
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTimer" {
             
@@ -57,9 +56,9 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
     func setUserSelectedTime() {
         userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
     }
-    
+
 }
