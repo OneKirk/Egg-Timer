@@ -21,6 +21,7 @@ class TimerViewController: UIViewController {
     var content: UNMutableNotificationContent = UNMutableNotificationContent()
     let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
     var wasSendToBackground: Bool = false
+    var accessToNotifications: Bool = false
 
     // Outlets
     @IBOutlet weak var resultLabel: UILabel!
@@ -33,14 +34,13 @@ class TimerViewController: UIViewController {
   
     @IBAction func playButton(_ sender: Any) {
         // Creating the timer
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(processTimer), userInfo: nil, repeats: true)
-        setupNotifications()
-        endTime = startTime.addingTimeInterval(TimeInterval(time))
-        
-        // Requesting access to local notifications
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            print(granted)
-            print(error ?? "No Error")}
+        if time > 0 {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(processTimer), userInfo: nil, repeats: true)
+            setupNotifications()
+            endTime = startTime.addingTimeInterval(TimeInterval(time))
+            
+            requestingAccessToSendNotifications()
+        }
     }
     
     @IBAction func resetButton(_ sender: Any) {
@@ -63,6 +63,8 @@ class TimerViewController: UIViewController {
         // Adding observers to detect transition to/from background state
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        
+        accessToNotifications = UserDefaults.standard.bool(forKey: "accessToNotifications")
     }
     
     @objc func applicationDidEnterBackground() {
@@ -145,6 +147,52 @@ class TimerViewController: UIViewController {
             }
         }
     
+    func requestingAccessToSendNotifications() {
+        
+        if accessToNotifications == false {
+         
+            // Setting up the alert controller
+            let alertController = UIAlertController(title: "Let us send you push notifications?", message: "We'll only notify you when your eggs are cooked!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Adding actions to alert controller
+            alertController.addAction(UIAlertAction(title: "No, Thanks", style: .default, handler: { (action) in
+                
+                let alertController = UIAlertController(title: "You have declined access to send you notifications!", message: "Please keep an eye on the timer, as we are not allowed to send you a notifications when your eggs are cooked!", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Yes, Please", style: .default, handler: { (action) in
+                
+                self.dismiss(animated: true, completion: nil)
+                
+                self.accessToNotifications = true
+                    
+                UserDefaults.standard.set(self.accessToNotifications, forKey: "accessToNotifications")
+                
+                
+                // Requesting access to local notifications
+                self.center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                    if granted == false {
+                        let alertController = UIAlertController(title: "You have declined access to send you notifications!", message: "Please keep an eye on the timer, as we are not allowed to send you a notifications when your eggs are cooked! Please change this in settings on you phone if you wish to recieve notifications!", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        
+                        self.present(alertController, animated: true, completion: nil)}
+                }
+            }))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    // Removing observers for notification center
     deinit {
         NotificationCenter.default.removeObserver(self)
         }

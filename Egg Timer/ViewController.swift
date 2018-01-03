@@ -11,12 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     // Variable declaration
-    var userSelectedTime = 0
-    var userEggSizeSelected = 0
-    var userEggCookingSelected = 0
-    // var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
-    var cookingTimes = [[5, 15, 30], [5, 15, 30], [5, 15, 30], [5, 15, 30]] // Delete before deployment
-
+    var userSelectedTime: Int = 0
+    var userEggSizeSelected: Int = 0
+    var userEggCookingSelected: Int = 0
+    var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
+    
     // Outlets
     @IBOutlet weak var eggSizeSelector: UISegmentedControl!
     @IBOutlet weak var eggCookingSelector: UISegmentedControl!
@@ -24,15 +23,28 @@ class ViewController: UIViewController {
     // IBActions
     @IBAction func eggSizeSelected(_ sender: Any) {
         userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
-        userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
+        setUserSelectedTime()
     }
     
     @IBAction func eggCookingSelected(_ sender: Any) {
         userEggCookingSelected = eggCookingSelector.selectedSegmentIndex
-        userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
+        setUserSelectedTime()
     }
     
     @IBAction func nextButton(_ sender: Any) {
+    }
+    
+    // Functions
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
+        userEggCookingSelected = eggCookingSelector.selectedSegmentIndex
+        setUserSelectedTime()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,16 +55,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Functions
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        userEggSizeSelected = eggSizeSelector.selectedSegmentIndex
-        userEggCookingSelected = eggCookingSelector.selectedSegmentIndex
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func setUserSelectedTime() {
+        userSelectedTime = cookingTimes[userEggSizeSelected][userEggCookingSelected]
     }
 }
-
