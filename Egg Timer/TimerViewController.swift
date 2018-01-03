@@ -25,7 +25,7 @@ class TimerViewController: UIViewController {
 
     // Outlets
     @IBOutlet weak var resultLabel: UILabel!
-    
+
     // IBActions
     @IBAction func pauseButton(_ sender: Any) {
         timer.invalidate()
