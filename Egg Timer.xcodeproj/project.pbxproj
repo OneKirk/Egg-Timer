@@ -13,6 +13,7 @@
 		E94232001FE65AA8000E9D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94231FF1FE65AA8000E9D41 /* Assets.xcassets */; };
 		E94232031FE65AA8000E9D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94232011FE65AA8000E9D41 /* LaunchScreen.storyboard */; };
 		E98682A81FE69C9400D44866 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98682A71FE69C9400D44866 /* TimerViewController.swift */; };
+		E9899F591FFCF95C00C7E69F /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9899F581FFCF95C00C7E69F /* bell.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E94232021FE65AA8000E9D41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E94232041FE65AA8000E9D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E98682A71FE69C9400D44866 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		E9899F581FFCF95C00C7E69F /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				E94231FF1FE65AA8000E9D41 /* Assets.xcassets */,
 				E94232011FE65AA8000E9D41 /* LaunchScreen.storyboard */,
 				E94232041FE65AA8000E9D41 /* Info.plist */,
+				E9899F581FFCF95C00C7E69F /* bell.mp3 */,
 			);
 			path = "Egg Timer";
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E94232031FE65AA8000E9D41 /* LaunchScreen.storyboard in Resources */,
+				E9899F591FFCF95C00C7E69F /* bell.mp3 in Resources */,
 				E94232001FE65AA8000E9D41 /* Assets.xcassets in Resources */,
 				E94231FE1FE65AA8000E9D41 /* Main.storyboard in Resources */,
 			);

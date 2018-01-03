@@ -131,7 +131,7 @@ class TimerViewController: UIViewController {
         // Defining the content of the local notification
         content.title = "Your eggs are done!"
         content.body = "Enjoy the perfect eggs"
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.init(named: "bell.mp3")
         content.categoryIdentifier = "TIMER_EXPIRED"
         content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
         

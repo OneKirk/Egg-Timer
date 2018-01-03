@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     var userSelectedTime: Int = 0
     var userEggSizeSelected: Int = 0
     var userEggCookingSelected: Int = 0
-    var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
+    var cookingTimes = [[5, 10, 15], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
+    // var cookingTimes = [[300, 390, 480], [330, 420, 510], [360, 450, 540], [390, 480, 570]]
 
     // Outlets
     @IBOutlet weak var eggSizeSelector: UISegmentedControl!
